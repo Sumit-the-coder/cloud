@@ -1,4 +1,11 @@
 ### How to run this app from command prompt
+- Install docker
+- Run below commad from main folder
+```
+docker-compose up -d
+```
+
+  
 - Run below commands from target folder
 ```
 export SPRING_CONFIG_LOCATION=classes/application.properties
