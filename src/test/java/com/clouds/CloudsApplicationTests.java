@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 @SpringBootTest
 class CloudsApplicationTests {
-	public static final Logger logger = (Logger) LogManager.getLogger(CloudsApplicationTests.class);
+	public static final Logger logger = LogManager.getLogger(CloudsApplicationTests.class);
 	@Test
 	void contextLoads() {
 		logger.info(CloudsApplicationTests.class.getName());
