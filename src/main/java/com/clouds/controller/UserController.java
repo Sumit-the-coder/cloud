@@ -18,8 +18,8 @@ public class UserController {
 
     @PostMapping("/save")
     public void save(@RequestBody User user){
-        logger.debug("User saving");
+        logger.info("User saving");
         userService.save(user);
-        logger.debug("User saved");
+        logger.info("User saved");
     }
 }
