@@ -29,4 +29,11 @@ public class UserController {
     public List<User> getAllUser(){
         return userService.getAllUser();
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteUser(@PathVariable long id){
+        logger.info("User deleting");
+        userService.deleteUserById(id);
+        logger.info("User deleted");
+    }
 }

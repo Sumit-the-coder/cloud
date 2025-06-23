@@ -11,22 +11,44 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     })
-    .then(response => response.json())
-    .then(user => console.log('Success:', user))
+    .then(() => loadTableData())
     .catch(error => console.error('Error:', error));
 });
 
-fetch('http://localhost:8080/users/get') // Example API
-    .then(response => response.json())
-    .then(data => {
-      const tableBody = document.querySelector('#data-table tbody');
-      data.forEach(user => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${user.id}</td>
-          <td>${user.userId}</td>
-        `;
-        tableBody.appendChild(row);
-      });
+// Function to load data and populate the table
+function loadTableData() {
+    fetch('http://localhost:8080/users/get')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.querySelector('#data-table tbody');
+            tableBody.innerHTML = ""; // Clear previous rows
+            data.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.userId}</td>
+                    <td>
+                        <button style="background: #e74c3c; color: #fff; border: none; border-radius: 4px; padding: 6px 12px; cursor: pointer;" onclick="deleteUser(${user.id})">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+// Delete user function
+function deleteUser(id) {
+    fetch(`http://localhost:8080/users/delete/${id}`, {
+        method: 'DELETE'
     })
-    .catch(error => console.error('Error fetching data:', error));
+    .then(() => loadTableData())
+    .catch(error => console.error('Error deleting user:', error));
+}
+
+// Initial load
+window.onload = loadTableData;
+
+
+
+

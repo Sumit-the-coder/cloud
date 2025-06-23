@@ -26,6 +26,10 @@ public class UserService {
         repo.delete(user);
     }
 
+    public void deleteUserById(long userid){
+        repo.deleteById(userid);
+    }
+
     public List<User> getAllUser(){
         List<User> list = new ArrayList<>();
         Iterator<User> iterator = repo.findAll().iterator();
