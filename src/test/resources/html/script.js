@@ -12,6 +12,8 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         body: JSON.stringify(user)
     })
     .then(() => loadTableData())
+    .then(() => $('#userId').val(''))
+    .then(() => $('#password').val(''))
     .catch(error => console.error('Error:', error));
 });
 
