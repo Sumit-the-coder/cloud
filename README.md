@@ -11,7 +11,7 @@ docker-compose up -d
 export SPRING_CONFIG_LOCATION=classes/application.properties
 ```
 ```
-java -jar clouds-0.0.1-SNAPSHOT.jar
+java -jar clouds-*.jar
 ```
 
 - There is a test page under /src/test/resources/index.html
