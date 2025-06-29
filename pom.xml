@@ -139,5 +139,29 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<!-- Example: use the Maven Compiler Plugin for production settings -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<source>21</source>
+							<target>21</target>
+							<optimize>true</optimize>
+							<debug>false</debug>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<!-- You can override default properties here if needed -->
+				<skipTests>true</skipTests>
+			</properties>
 
+		</profile>
+	</profiles>
 </project>
